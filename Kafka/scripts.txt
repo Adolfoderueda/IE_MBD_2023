@@ -1,0 +1,17 @@
+# Start Kafka
+sudo service kafka start
+
+# Store Cluster ID
+kafka-storage.sh format -t $KAFKA_CLUSTER_ID -c config/kraft/server.properties
+
+# Create Topic
+kafka-topics.sh --create --topic quickstart-events --bootstrap-server localhost:9092
+
+# Start producer
+kafka-console-producer.sh --topic test --bootstrap-server localhost:9092
+
+# Start Consumer
+kafka-console-consumer.sh --topic test --bootstrap-server localhost:9092
+
+# Stop Kafka
+sudo service kafka stop
